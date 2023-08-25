@@ -25,6 +25,7 @@ GENERIC?=0
 PTHREAD?=0
 ADDRESS_SANITIZER?=1
 GCOV?=0
+ARCH=aos
 
 # Default compiled-in protocols
 #
@@ -172,6 +173,10 @@ endif
 
 ifeq ($(ARCH),arm9)
   CFLAGS+=-DARM9 -mcpu=arm9e -march=armv5te -gdwarf-2 -Wall -marm -mthumb-interwork -fpack-struct
+endif
+
+ifeq ($(ARCH),aos)
+  CFLAGS+=-DAOS -Wall 
 endif
 
 ifeq ($(ADDRESS_SANITIZER),1)
